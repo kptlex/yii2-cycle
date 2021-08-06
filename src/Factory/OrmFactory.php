@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Lex\Yii\Cycle\Factory;
 
-use Yii;
 use Cycle\ORM\FactoryInterface;
 use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\SchemaInterface;
-use Spiral\Database\DatabaseManager;
-use Spiral\Database\DatabaseProviderInterface;
-use Spiral\Migrations\Migrator;
 use Lex\Yii\Cycle\Command\MigrateCommand;
 use Lex\Yii\Cycle\Debug\Logger\CycleLogger;
 use Lex\Yii\Cycle\Debug\Panel;
 use Lex\Yii\Cycle\Provider\ProviderInterface;
+use Spiral\Database\DatabaseManager;
+use Spiral\Database\DatabaseProviderInterface;
+use Spiral\Migrations\Migrator;
+use Yii;
 use yii\base\BootstrapInterface;
 use yii\base\InvalidConfigException;
 use yii\debug\Module;
@@ -23,6 +23,7 @@ use yii\di\Container;
 use yii\di\NotInstantiableException;
 
 use function defined;
+use yii\i18n\PhpMessageSource;
 
 final class OrmFactory implements BootstrapInterface
 {
@@ -40,6 +41,12 @@ final class OrmFactory implements BootstrapInterface
      */
     public function bootstrap($app): void
     {
+        Yii::$app->getI18n()->translations['yii-cycle'] = [
+            'class' => PhpMessageSource::class,
+            'sourceLanguage' => 'en-US',
+            'basePath' => '@vendor/kptlex/yii-cycle/resources/i18n',
+        ];
+
         $this->__invoke();
     }
 

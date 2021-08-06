@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Lex\Yii\Cycle;
 
 use DateTime;
+use Doctrine\Inflector\Inflector;
+use Doctrine\Inflector\Rules\English\InflectorFactory;
 use Spiral\Core\Container;
 use Spiral\Core\FactoryInterface;
 use Spiral\Files\Files;
@@ -15,7 +17,6 @@ use Spiral\Migrations\MigrationInterface;
 use Spiral\Migrations\RepositoryInterface;
 use Spiral\Migrations\State;
 use Spiral\Tokenizer\Reflection\ReflectionFile;
-use yii\helpers\Inflector;
 use Generator;
 use ReflectionClass;
 use ReflectionException;
@@ -40,6 +41,7 @@ final class FileRepository implements RepositoryInterface
     private int $chunkID = 0;
     private FactoryInterface $factory;
     private FilesInterface $files;
+    private Inflector $inflector;
     private MigrationConfig $config;
 
 
@@ -52,6 +54,7 @@ final class FileRepository implements RepositoryInterface
         $this->config = $config;
         $this->files = new Files();
         $this->factory = $factory ?? new Container();
+        $this->inflector = (new InflectorFactory())->build();
     }
 
     /**
@@ -156,7 +159,7 @@ final class FileRepository implements RepositoryInterface
      */
     public function createFilename(string $name): string
     {
-        $name = Inflector::tableize($name);
+        $name = $this->inflector->tableize($name);
 
         $filename = sprintf(
             self::FILENAME_FORMAT,

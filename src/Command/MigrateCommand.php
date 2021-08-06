@@ -4,22 +4,21 @@ declare(strict_types=1);
 
 namespace Lex\Yii\Cycle\Command;
 
-use ReflectionException;
-use Spiral\Migrations\Migration;
-use Spiral\Migrations\Migrator;
-use Spiral\Reactor\FileDeclaration;
-use Throwable;
 use Lex\Yii\Cycle\ClassDeclaration;
 use Lex\Yii\Cycle\Factory\MigrationFactory;
 use Lex\Yii\Cycle\Factory\OrmFactory;
 use Lex\Yii\Cycle\FileRepository;
-use Lex\Yii\Cycle\Provider\ProviderInterface;
-use yii\helpers\Inflector;
+use ReflectionException;
+use Spiral\Migrations\Config\MigrationConfig;
+use Spiral\Migrations\Migration;
+use Spiral\Migrations\Migrator;
+use Spiral\Reactor\FileDeclaration;
+use Throwable;
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\console\Controller;
 use yii\di\NotInstantiableException;
 use yii\helpers\Console;
-use Yii;
 
 final class MigrateCommand extends Controller
 {
@@ -71,28 +70,35 @@ final class MigrateCommand extends Controller
      */
     public function actionCreate(string $name): void
     {
-        $config = $this->migrator->getConfig();
-
-        $name = Inflector::tableize($name);
-
+        $defaultConfig = $this->migrator->getConfig();
+        $currentDirectory = str_replace(Yii::$app->basePath . '/', '', $defaultConfig->getDirectory());
+        $directory = $this->prompt(
+            Yii::t('yii-cycle', 'Specify the path to migration directory.'),
+            ['default' => $currentDirectory]
+        );
+        $directory = Yii::$app->basePath . '/' . $directory;
+        $namespace = $this->prompt(
+            Yii::t('yii-cycle', 'Specify the migration namespace.'),
+            ['default' => $defaultConfig->getNamespace()]
+        );
+        $config = new MigrationConfig([
+            'directory' => $directory,
+            'namespace' => $namespace,
+            'table' => $defaultConfig->getTable()
+        ]);
         $fileRepository = new FileRepository($config);
-        $name = $fileRepository->createFilename($name);
-        $class = new ClassDeclaration(str_replace('.php', '', basename($name)), 'Migration');
+        $fileName = str_replace('.php', '', basename($fileRepository->createFilename($name)));
+        $class = new ClassDeclaration($fileName, 'Migration');
         $class->method('up')->setPublic()->setReturn('void');
         $class->method('down')->setPublic()->setReturn('void');
 
-        $file = new FileDeclaration($config->getNamespace());
+
+        $file = new FileDeclaration($namespace);
         $file->addUse(Migration::class);
         $file->addElement($class);
 
-        $provider = Yii::$container->get(ProviderInterface::class);
-        $migrationConfig = $provider->getMigrationConfig();
-        $fileRepository = new FileRepository($migrationConfig);
-        $fileRepository->registerMigration(
-            str_replace('.php', '', basename($name)),
-            str_replace('.php', '', basename($name)),
-            $file->render()
-        );
+        $fileRepository = new FileRepository($config);
+        $fileRepository->registerMigration($name, $fileName, $file->render());
         $this->stdout('Migration "' . $name . '"  created' . PHP_EOL, Console::FG_GREEN);
     }
 
