@@ -71,7 +71,9 @@ final class MigrateCommand extends Controller
     public function actionCreate(string $name): void
     {
         $defaultConfig = $this->migrator->getConfig();
-        $currentDirectory = str_replace(Yii::$app->basePath . '/', '', $defaultConfig->getDirectory());
+        $directories = $defaultConfig->getDirectories();
+        $directory = count($directories) ? $directories[array_key_first($directories)] : 'src/Migration';
+        $currentDirectory = str_replace(Yii::$app->basePath . '/', '', $directory);
         $directory = $this->prompt(
             Yii::t('yii-cycle', 'Specify the path to migration directory.'),
             ['default' => $currentDirectory]
@@ -82,7 +84,7 @@ final class MigrateCommand extends Controller
             ['default' => $defaultConfig->getNamespace()]
         );
         $config = new MigrationConfig([
-            'directory' => $directory,
+            'directories' => [$directory],
             'namespace' => $namespace,
             'table' => $defaultConfig->getTable()
         ]);

@@ -23,6 +23,7 @@ use Spiral\Migrations\Config\MigrationConfig;
 use Spiral\Tokenizer\ClassLocator;
 use Symfony\Component\Finder\Finder;
 use Yii;
+use yii\helpers\VarDumper;
 
 class FileProvider implements ProviderInterface
 {
@@ -72,7 +73,7 @@ class FileProvider implements ProviderInterface
     public function getEntities(): array
     {
         $entities = [];
-        foreach ($this->entities as $index => $entity) {
+        foreach ($this->entities as $entity) {
             $entities[] = Yii::getAlias($entity);
         }
         return $entities;
@@ -84,7 +85,6 @@ class FileProvider implements ProviderInterface
             ->files()
             ->in($this->getEntities());
         $classLocator = new ClassLocator($finder);
-
         $schema = (new Compiler())->compile(
             new Registry($this->getDbal()),
             [
@@ -104,9 +104,13 @@ class FileProvider implements ProviderInterface
 
     public function getMigrationConfig(): MigrationConfig
     {
+        $directories = [];
+        foreach ($this->migrations as $migration) {
+            $directories[] = Yii::getAlias($migration);
+        }
         return new MigrationConfig(
             [
-                'directory' => Yii::getAlias($this->migrationPath),
+                'directories' => $directories,
                 'table' => $this->migrationTable,
                 'namespace' => $this->migrationNamespace
             ]

@@ -6,6 +6,7 @@ namespace Lex\Yii\Cycle\Provider;
 
 use Cycle\ORM\SchemaInterface;
 use yii\caching\CacheInterface;
+use yii\caching\ChainedDependency;
 
 class CacheProvider extends FileProvider
 {
@@ -26,6 +27,6 @@ class CacheProvider extends FileProvider
     {
         return $this->cache->getOrSet($this->cacheKey, function () {
             return parent::getSchema();
-        });
+        }, new ChainedDependency(['data' => $this->entities]));
     }
 }

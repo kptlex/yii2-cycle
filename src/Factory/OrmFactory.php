@@ -61,7 +61,6 @@ final class OrmFactory implements BootstrapInterface
         $dbal = $this->getDbal();
 
         $container = $this->container;
-
         Yii::$container->setSingletons(
             [
                 FactoryInterface::class => static function () use ($dbal, $container) {

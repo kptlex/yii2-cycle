@@ -125,7 +125,7 @@ final class FileRepository implements RepositoryInterface
      */
     private function getFiles(): Generator
     {
-        $this->directories[] = $this->config->getDirectory();
+        $this->directories = $this->config->getDirectories();
         foreach ($this->directories as $directory) {
             foreach ($this->files->getFiles($directory, '*.php') as $filename) {
                 if (!preg_match('/V[\d]+_(.*)/', $filename)) {
@@ -168,7 +168,7 @@ final class FileRepository implements RepositoryInterface
         );
 
         return $this->files->normalizePath(
-            $this->config->getDirectory() . FilesInterface::SEPARATOR . $filename
+            $this->config->getDirectories()[0] . FilesInterface::SEPARATOR . $filename
         );
     }
 }
