@@ -21,9 +21,9 @@ use yii\base\InvalidConfigException;
 use yii\debug\Module;
 use yii\di\Container;
 use yii\di\NotInstantiableException;
+use yii\i18n\PhpMessageSource;
 
 use function defined;
-use yii\i18n\PhpMessageSource;
 
 final class OrmFactory implements BootstrapInterface
 {
@@ -117,7 +117,16 @@ final class OrmFactory implements BootstrapInterface
             /**
              * @var Module $debug
              */
-            foreach (Yii::$app->getModules() as $module) {
+            foreach (Yii::$app->modules as $key => $module) {
+                if (is_array($module) && $module['class'] === Module::class) {
+                    if (!isset($module['panels'])) {
+                        $module['panels'] = [];
+                    }
+                    $module['panels']['yii-cycle'] = [
+                        'class' => Panel::class
+                    ];
+                    Yii::$app->setModule($key, $module);
+                }
                 if ($module instanceof Module) {
                     $module->panels['yii-cycle'] = Yii::createObject(
                         Panel::class,

@@ -10,15 +10,7 @@ final class CycleLogger implements LoggerInterface
 {
     public const LOG_TAG = 'cycle';
 
-    private array $data;
-
-    /**
-     * CycleLogger constructor.
-     */
-    public function __construct()
-    {
-        $this->data = [];
-    }
+    private static array $data = [];
 
     public function emergency($message, array $context = []): void
     {
@@ -58,15 +50,15 @@ final class CycleLogger implements LoggerInterface
         $context['query'] = $message;
         $context['time'] = time();
 
-        if (!isset($this->data['query'])) {
-            $this->data['query'] = [];
+        if (!isset(self::$data['query'])) {
+            self::$data['query'] = [];
         }
-        $this->data['query'][] = $context;
+        self::$data['query'][] = $context;
     }
 
     public function getQueries(): array
     {
-        return $this->data['query'] ?? [];
+        return self::$data['query'] ?? [];
     }
 
     public function debug($message, array $context = []): void
@@ -76,10 +68,10 @@ final class CycleLogger implements LoggerInterface
 
     private function attach($category, $message, array $context): void
     {
-        if (!isset($this->data[$category])) {
-            $this->data[$category] = [];
+        if (!isset(self::$data[$category])) {
+            self::$data[$category] = [];
         }
-        $this->data[$category] = compact('message', 'context');
+        self::$data[$category] = compact('message', 'context');
     }
 
     public function log($level, $message, array $context = []): void

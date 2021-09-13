@@ -23,7 +23,6 @@ use Spiral\Migrations\Config\MigrationConfig;
 use Spiral\Tokenizer\ClassLocator;
 use Symfony\Component\Finder\Finder;
 use Yii;
-use yii\helpers\VarDumper;
 
 class FileProvider implements ProviderInterface
 {
