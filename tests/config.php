@@ -42,6 +42,7 @@ return [
                     ]
                 ],
                 'migrations' => [
+                    __DIR__ . DIRECTORY_SEPARATOR . 'Migration'
                 ],
                 'entities' => [
                     __DIR__ . DIRECTORY_SEPARATOR . 'Entity'

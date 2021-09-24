@@ -68,21 +68,29 @@ final class MigrateCommand extends Controller
      * @throws ReflectionException
      * @throws Throwable
      */
-    public function actionCreate(string $name): void
+    public function actionCreate(string $name, ?string $directory = null): void
     {
         $defaultConfig = $this->migrator->getConfig();
-        $directories = $defaultConfig->getDirectories();
-        $directory = count($directories) ? $directories[array_key_first($directories)] : 'src/Migration';
-        $currentDirectory = str_replace(Yii::$app->basePath . '/', '', $directory);
-        $directory = $this->prompt(
-            Yii::t('yii-cycle', 'Specify the path to migration directory.'),
-            ['default' => $currentDirectory]
-        );
+        if (!$directory) {
+            $directory = $defaultConfig->getDirectory();
+            if ($this->interactive) {
+                $currentDirectory = str_replace(Yii::$app->basePath . '/', '', $directory);
+                $directory = $this->prompt(
+                    Yii::t('yii-cycle', 'Specify the path to migration directory.'),
+                    ['default' => $currentDirectory]
+                );
+            }
+        }
         $directory = Yii::$app->basePath . '/' . $directory;
-        $namespace = $this->prompt(
-            Yii::t('yii-cycle', 'Specify the migration namespace.'),
-            ['default' => $defaultConfig->getNamespace()]
-        );
+        if ($this->interactive) {
+            $namespace = $this->prompt(
+                Yii::t('yii-cycle', 'Specify the migration namespace.'),
+                ['default' => $defaultConfig->getNamespace()]
+            );
+        } else {
+            $namespace = $defaultConfig->getNamespace();
+        }
+
         $config = new MigrationConfig([
             'directories' => [$directory],
             'namespace' => $namespace,

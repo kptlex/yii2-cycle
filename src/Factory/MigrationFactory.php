@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lex\Yii\Cycle\Factory;
 
+use Spiral\Migrations\Config\MigrationConfig as SpiralMigrationConfig;
 use Yii;
 use Lex\Yii\Cycle\FileRepository;
 use Lex\Yii\Cycle\MigrationConfig;
@@ -32,8 +33,10 @@ final class MigrationFactory
         if ($config === null) {
             $config = $this->provider->getMigrationConfig();
         }
-        $cycleConfig = new \Spiral\Migrations\Config\MigrationConfig([
-            'directory' => $config->getDirectories()[0]
+        $cycleConfig = new SpiralMigrationConfig([
+            'directory' => $config->getDirectories()[0],
+            'namespace' => $config->getNamespace(),
+            'table' => $config->getTable()
         ]);
         return new Migrator($cycleConfig, $dbal, new FileRepository($config));
     }
