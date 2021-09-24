@@ -7,7 +7,7 @@ namespace Lex\Yii\Cycle\Provider;
 use Cycle\ORM\FactoryInterface;
 use Cycle\ORM\SchemaInterface;
 use Spiral\Database\DatabaseManager;
-use Spiral\Migrations\Config\MigrationConfig;
+use Lex\Yii\Cycle\MigrationConfig;
 
 interface ProviderInterface
 {

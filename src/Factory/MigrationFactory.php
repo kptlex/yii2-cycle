@@ -6,10 +6,10 @@ namespace Lex\Yii\Cycle\Factory;
 
 use Yii;
 use Lex\Yii\Cycle\FileRepository;
+use Lex\Yii\Cycle\MigrationConfig;
 use Lex\Yii\Cycle\Provider\ProviderInterface;
 use yii\base\InvalidConfigException;
 use yii\di\NotInstantiableException;
-use Spiral\Migrations\Config\MigrationConfig;
 use Spiral\Database\DatabaseManager;
 use Spiral\Migrations\Migrator;
 
@@ -32,6 +32,9 @@ final class MigrationFactory
         if ($config === null) {
             $config = $this->provider->getMigrationConfig();
         }
-        return new Migrator($config, $dbal, new FileRepository($config));
+        $cycleConfig = new \Spiral\Migrations\Config\MigrationConfig([
+            'directory' => $config->getDirectories()[0]
+        ]);
+        return new Migrator($cycleConfig, $dbal, new FileRepository($config));
     }
 }

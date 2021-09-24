@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Lex\Yii\Cycle\Provider;
 
+use Lex\Yii\Cycle\MigrationConfig;
 use Cycle\Annotated;
 use Cycle\ORM\Factory;
 use Cycle\ORM\FactoryInterface;
@@ -19,7 +20,6 @@ use Cycle\Schema\Generator\ValidateEntities;
 use Cycle\Schema\Registry;
 use Spiral\Database\Config\DatabaseConfig;
 use Spiral\Database\DatabaseManager;
-use Spiral\Migrations\Config\MigrationConfig;
 use Spiral\Tokenizer\ClassLocator;
 use Symfony\Component\Finder\Finder;
 use Yii;
@@ -97,7 +97,6 @@ class FileProvider implements ProviderInterface
                 new GenerateTypecast(), // typecast non string columns
             ]
         );
-
         return new Schema($schema);
     }
 

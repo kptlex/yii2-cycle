@@ -61,7 +61,7 @@ final class OrmFactory implements BootstrapInterface
         $dbal = $this->getDbal();
 
         $container = $this->container;
-        Yii::$container->setSingletons(
+        $container->setSingletons(
             [
                 FactoryInterface::class => static function () use ($dbal, $container) {
                     $provider = $container->get(ProviderInterface::class);
@@ -82,7 +82,6 @@ final class OrmFactory implements BootstrapInterface
                 }
             ]
         );
-
         if (Yii::$app->request->isConsoleRequest) {
             Yii::$app->controllerMap['migrator'] = MigrateCommand::class;
         }

@@ -11,7 +11,6 @@ use Spiral\Core\Container;
 use Spiral\Core\FactoryInterface;
 use Spiral\Files\Files;
 use Spiral\Files\FilesInterface;
-use Spiral\Migrations\Config\MigrationConfig;
 use Spiral\Migrations\Exception\RepositoryException;
 use Spiral\Migrations\MigrationInterface;
 use Spiral\Migrations\RepositoryInterface;
