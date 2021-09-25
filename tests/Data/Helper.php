@@ -9,7 +9,7 @@ use function in_array;
 class Helper extends TestCase
 {
     /**
-     * @uses \Lex\Yii\Cycle\Tests\MigrationTest::testMigrationUp()
+     * @uses \Lex\Yii2\Cycle\Tests\MigrationTest::testMigrationUp()
      */
     public static function getAndUpdateNewMigrationFile()
     {

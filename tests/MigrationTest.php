@@ -1,15 +1,15 @@
 <?php
 
-namespace Lex\Yii\Cycle\Tests;
+namespace Lex\Yii2\Cycle\Tests;
 
 use Cycle\ORM\ORMInterface;
 use Exception;
 use PHPUnit\Framework\TestCase;
 use Spiral\Migrations\Migrator;
 use Yii;
-use Lex\Yii\Cycle\Command\MigrateCommand;
-use Lex\Yii\Cycle\Factory\OrmFactory;
-use Lex\Yii\Cycle\Tests\Data\Helper\MigrationHelper;
+use Lex\Yii2\Cycle\Command\MigrateCommand;
+use Lex\Yii2\Cycle\Factory\OrmFactory;
+use Lex\Yii2\Cycle\Tests\Data\Helper\MigrationHelper;
 
 final class MigrationTest extends TestCase
 {

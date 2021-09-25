@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Command;
+namespace Lex\Yii2\Cycle\Command;
 
-use Lex\Yii\Cycle\ClassDeclaration;
-use Lex\Yii\Cycle\Factory\MigrationFactory;
-use Lex\Yii\Cycle\Factory\OrmFactory;
-use Lex\Yii\Cycle\FileRepository;
-use Lex\Yii\Cycle\MigrationConfig;
+use Lex\Yii2\Cycle\ClassDeclaration;
+use Lex\Yii2\Cycle\Factory\MigrationFactory;
+use Lex\Yii2\Cycle\Factory\OrmFactory;
+use Lex\Yii2\Cycle\FileRepository;
+use Lex\Yii2\Cycle\MigrationConfig;
 use ReflectionException;
 use Spiral\Migrations\Migration;
 use Spiral\Migrations\Migrator;

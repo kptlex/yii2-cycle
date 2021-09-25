@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle;
+namespace Lex\Yii2\Cycle;
 
 use Spiral\Core\InjectableConfig;
 

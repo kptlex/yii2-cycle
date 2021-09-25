@@ -1,6 +1,6 @@
 <?php
 
-namespace Lex\Yii\Cycle\Tests\Migration;
+namespace Lex\Yii2\Cycle\Tests\Migration;
 
 class NoMigration
 {

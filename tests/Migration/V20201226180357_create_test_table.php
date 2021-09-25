@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Tests\Migration;
+namespace Lex\Yii2\Cycle\Tests\Migration;
 
 use Spiral\Migrations\Migration;
 

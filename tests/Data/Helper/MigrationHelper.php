@@ -1,6 +1,6 @@
 <?php
 
-namespace Lex\Yii\Cycle\Tests\Data\Helper;
+namespace Lex\Yii2\Cycle\Tests\Data\Helper;
 
 use function dirname;
 use function in_array;

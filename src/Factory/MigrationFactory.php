@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Factory;
+namespace Lex\Yii2\Cycle\Factory;
 
 use Spiral\Migrations\Config\MigrationConfig as SpiralMigrationConfig;
 use Yii;
-use Lex\Yii\Cycle\FileRepository;
-use Lex\Yii\Cycle\MigrationConfig;
-use Lex\Yii\Cycle\Provider\ProviderInterface;
+use Lex\Yii2\Cycle\FileRepository;
+use Lex\Yii2\Cycle\MigrationConfig;
+use Lex\Yii2\Cycle\Provider\ProviderInterface;
 use yii\base\InvalidConfigException;
 use yii\di\NotInstantiableException;
 use Spiral\Database\DatabaseManager;

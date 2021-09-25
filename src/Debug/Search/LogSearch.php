@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Debug\Search;
+namespace Lex\Yii2\Cycle\Debug\Search;
 
 use yii\data\ArrayDataProvider;
 
 /**
  * Class LogSearch
- * @package Lex\Yii\Cycle\Debug\Search
+ * @package Lex\Yii2\Cycle\Debug\Search
  */
 final class LogSearch
 {

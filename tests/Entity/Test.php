@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Tests\Entity;
+namespace Lex\Yii2\Cycle\Tests\Entity;
 
 use Cycle\Annotated\Annotation as ORM;
 
 /**
  * Class Test
- * @package Lex\Yii\Cycle\Tests\Entity
+ * @package Lex\Yii2\Cycle\Tests\Entity
  * @ORM\Entity(table="test")
  */
 class Test

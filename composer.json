@@ -1,11 +1,10 @@
 {
-  "name": "kptlex/yii-cycle",
+  "name": "kptlex/yii2-cycle",
   "description": "Cycle ORM adapter for Yii2.",
   "keywords": [
     "cycle",
     "orm",
-    "yii2",
-    "yii"
+    "yii2"
   ],
   "type": "library",
   "license": "MIT",
@@ -17,12 +16,12 @@
   ],
   "autoload": {
     "psr-4": {
-      "Lex\\Yii\\Cycle\\": "src"
+      "Lex\\Yii2\\Cycle\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Lex\\Yii\\Cycle\\Tests\\": "tests"
+      "Lex\\Yii2\\Cycle\\Tests\\": "tests"
     }
   },
   "require": {

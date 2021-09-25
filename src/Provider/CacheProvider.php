@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Provider;
+namespace Lex\Yii2\Cycle\Provider;
 
 use Cycle\ORM\SchemaInterface;
 use yii\caching\CacheInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Lex\Yii\Cycle\Tests\Data\Yii;
+namespace Lex\Yii2\Cycle\Tests\Data\Yii;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use yii\base\View;
 use yii\data\ArrayDataProvider;
 use yii\grid\GridView;
-use Lex\Yii\Cycle\Debug\Search\LogSearch;
+use Lex\Yii2\Cycle\Debug\Search\LogSearch;
 
 /** @var View $this */
 /** @var ArrayDataProvider $dataProvider */

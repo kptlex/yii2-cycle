@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle;
+namespace Lex\Yii2\Cycle;
 
 use DateTime;
 use Doctrine\Inflector\Inflector;

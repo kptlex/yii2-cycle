@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Provider;
+namespace Lex\Yii2\Cycle\Provider;
 
-use Lex\Yii\Cycle\MigrationConfig;
+use Lex\Yii2\Cycle\MigrationConfig;
 use Cycle\Annotated;
 use Cycle\ORM\Factory;
 use Cycle\ORM\FactoryInterface;

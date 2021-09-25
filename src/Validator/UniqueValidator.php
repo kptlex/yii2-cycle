@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Validator;
+namespace Lex\Yii2\Cycle\Validator;
 
 use Cycle\ORM\ORMInterface;
 use Yii;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Debug;
+namespace Lex\Yii2\Cycle\Debug;
 
 use Yii;
-use Lex\Yii\Cycle\Debug\Logger\CycleLogger;
-use Lex\Yii\Cycle\Debug\Search\LogSearch;
+use Lex\Yii2\Cycle\Debug\Logger\CycleLogger;
+use Lex\Yii2\Cycle\Debug\Search\LogSearch;
 use yii\base\InvalidConfigException;
 use yii\debug\Panel as DebugPanel;
 use yii\di\NotInstantiableException;

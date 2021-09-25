@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Debug\Logger;
+namespace Lex\Yii2\Cycle\Debug\Logger;
 
 use Psr\Log\LoggerInterface;
 

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Tests;
+namespace Lex\Yii2\Cycle\Tests;
 
 use Spiral\Migrations\Exception\RepositoryException;
 use Yii;
 use PHPUnit\Framework\TestCase;
 use Cycle\{ORM\ORM, ORM\ORMInterface};
-use Lex\Yii\Cycle\Factory\OrmFactory;
-use Lex\Yii\Cycle\FileRepository;
-use Lex\Yii\Cycle\Provider\CacheProvider;
-use Lex\Yii\Cycle\Provider\ProviderInterface;
-use Lex\Yii\Cycle\Tests\Migration\NoMigration;
-use Lex\Yii\Cycle\Tests\Migration\V20201226180357_create_test_table;
+use Lex\Yii2\Cycle\Factory\OrmFactory;
+use Lex\Yii2\Cycle\FileRepository;
+use Lex\Yii2\Cycle\Provider\CacheProvider;
+use Lex\Yii2\Cycle\Provider\ProviderInterface;
+use Lex\Yii2\Cycle\Tests\Migration\NoMigration;
+use Lex\Yii2\Cycle\Tests\Migration\V20201226180357_create_test_table;
 
 final class CycleTest extends TestCase
 {

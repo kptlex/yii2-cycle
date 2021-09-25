@@ -1,12 +1,12 @@
 <?php
 
-namespace Lex\Yii\Cycle\Tests;
+namespace Lex\Yii2\Cycle\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Yii;
 use yii\grid\GridView;
-use Lex\Yii\Cycle\Debug\Logger\CycleLogger;
-use Lex\Yii\Cycle\Debug\Panel;
+use Lex\Yii2\Cycle\Debug\Logger\CycleLogger;
+use Lex\Yii2\Cycle\Debug\Panel;
 
 final class LoggerTest extends TestCase
 {

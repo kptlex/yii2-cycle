@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 use Spiral\Database\Driver\SQLite\SQLiteDriver;
-use Lex\Yii\Cycle\Provider\CacheProvider;
-use Lex\Yii\Cycle\Provider\ProviderInterface;
+use Lex\Yii2\Cycle\Provider\CacheProvider;
+use Lex\Yii2\Cycle\Provider\ProviderInterface;
 use yii\caching\CacheInterface;
 use yii\caching\FileCache;
 use yii\debug\Module;
 
 return [
-    'id' => 'yii-cycle-test',
+    'id' => 'yii2-cycle-test',
     'basePath' => __DIR__,
     'aliases' => [
         '@web/assets' => __DIR__,
@@ -49,7 +49,7 @@ return [
                 ],
                 'migrationTable' => 'migrations',
                 'migrationPath' => __DIR__ . DIRECTORY_SEPARATOR . 'Migration',
-                'migrationNamespace' => 'Lex\\Yii\\Cycle\\Tests\\Migration'
+                'migrationNamespace' => 'Lex\\Yii2\\Cycle\\Tests\\Migration'
             ]
         ]
     ],

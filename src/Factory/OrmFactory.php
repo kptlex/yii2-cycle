@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Lex\Yii\Cycle\Factory;
+namespace Lex\Yii2\Cycle\Factory;
 
 use Cycle\ORM\FactoryInterface;
 use Cycle\ORM\ORM;
 use Cycle\ORM\ORMInterface;
 use Cycle\ORM\SchemaInterface;
-use Lex\Yii\Cycle\Command\MigrateCommand;
-use Lex\Yii\Cycle\Debug\Logger\CycleLogger;
-use Lex\Yii\Cycle\Debug\Panel;
-use Lex\Yii\Cycle\Provider\ProviderInterface;
+use Lex\Yii2\Cycle\Command\MigrateCommand;
+use Lex\Yii2\Cycle\Debug\Logger\CycleLogger;
+use Lex\Yii2\Cycle\Debug\Panel;
+use Lex\Yii2\Cycle\Provider\ProviderInterface;
 use Spiral\Database\DatabaseManager;
 use Spiral\Database\DatabaseProviderInterface;
 use Spiral\Migrations\Migrator;
@@ -73,6 +73,9 @@ final class OrmFactory implements BootstrapInterface
                 },
                 ORMInterface::class => [
                     'class' => ORM::class,
+                ],
+                ORM::class => [
+                    'class' => ORM::class
                 ],
                 Migrator::class => static function () use ($container, $dbal) {
                     $provider = $container->get(ProviderInterface::class);
