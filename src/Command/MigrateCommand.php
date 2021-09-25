@@ -72,12 +72,11 @@ final class MigrateCommand extends Controller
     {
         $defaultConfig = $this->migrator->getConfig();
         if (!$directory) {
-            $directory = $defaultConfig->getDirectory();
+            $directory = str_replace(Yii::$app->basePath . '/', '', $defaultConfig->getDirectory());
             if ($this->interactive) {
-                $currentDirectory = str_replace(Yii::$app->basePath . '/', '', $directory);
                 $directory = $this->prompt(
                     Yii::t('yii-cycle', 'Specify the path to migration directory.'),
-                    ['default' => $currentDirectory]
+                    ['default' => $directory]
                 );
             }
         }

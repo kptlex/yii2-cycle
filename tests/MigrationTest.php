@@ -23,11 +23,7 @@ final class MigrationTest extends TestCase
 
     public function testCreate()
     {
-        /**
-         * @var MigrateCommand $migrator
-         */
-        $migrator = Yii::$app->createController('migrator')[0];
-        $migrator->actionCreate('second_test');
+        $this->getMigrator()->actionCreate('second_test');
         $newMigrationFile = MigrationHelper::getNewMigration();
         self::assertNotEmpty($newMigrationFile);
         MigrationHelper::breakMigration($newMigrationFile);
@@ -40,16 +36,22 @@ final class MigrationTest extends TestCase
         self::assertInstanceOf(Migrator::class, $migrator);
     }
 
-    protected function migrationUp()
+    private function getMigrator(): MigrateCommand
     {
-        $migrator = Yii::$container->get(Migrator::class);
-        self::assertInstanceOf(Migrator::class, $migrator);
         /**
          * @var MigrateCommand $migrator
          */
         $migrator = Yii::$app->createController('migrator')[0];
+        $migrator->interactive = false;
+        return $migrator;
+    }
 
-        $migrator->actionIndex();
+    protected function migrationUp()
+    {
+        $migrator = Yii::$container->get(Migrator::class);
+        self::assertInstanceOf(Migrator::class, $migrator);
+
+        $this->getMigrator()->actionIndex();
         /**
          * @var ORMInterface $orm
          */
@@ -82,11 +84,7 @@ final class MigrationTest extends TestCase
      */
     public function testMigrationDown()
     {
-        /**
-         * @var MigrateCommand $migrator
-         */
-        $migrator = Yii::$app->createController('migrator')[0];
-        $migrator->actionDown();
+        $this->getMigrator()->actionDown();
         /**
          * @var ORMInterface $orm
          */
