@@ -2,17 +2,17 @@
 
 Cycle ORM adapter for Yii2 framework with debug panel.
 
-[![Latest Stable Version](https://poser.pugx.org/kptlex/yii-cycle/v)](//packagist.org/packages/kptlex/yii-cycle)
-[![Latest Unstable Version](https://poser.pugx.org/kptlex/yii-cycle/v/unstable)](//packagist.org/packages/kptlex/yii-cycle)
-[![Build Status](https://github.com/kptlex/yii-cycle/workflows/build/badge.svg)](https://github.com/kptlex/yii-cycle/actions)
-[![codecov](https://codecov.io/gh/kptlex/yii-cycle/branch/main/graph/badge.svg?token=S5C6K9Y760)](https://codecov.io/gh/kptlex/yii-cycle)
+[![Latest Stable Version](https://poser.pugx.org/kptlex/yii2-cycle/v)](//packagist.org/packages/kptlex/yii2-cycle)
+[![Latest Unstable Version](https://poser.pugx.org/kptlex/yii2-cycle/v/unstable)](//packagist.org/packages/kptlex/yii2-cycle)
+[![Build Status](https://github.com/kptlex/yii2-cycle/workflows/build/badge.svg)](https://github.com/kptlex/yii2-cycle/actions)
+[![codecov](https://codecov.io/gh/kptlex/yii2-cycle/branch/main/graph/badge.svg?token=S5C6K9Y760)](https://codecov.io/gh/kptlex/yii2-cycle)
 
 # Installation
 
 1. Use composer.
 
 ```
-composer require kptlex/yii-cycle
+composer require kptlex/yii2-cycle
 ```
 
 2. Added configuration to your configs:
@@ -20,9 +20,9 @@ composer require kptlex/yii-cycle
 ```php
 
 use Spiral\Database\Driver\MySQL\MySQLDriver;
-use Lex\Yii\Cycle\Provider\CacheProvider;
-use Lex\Yii\Cycle\Factory\OrmFactory;
-use Lex\Yii\Cycle\Provider\ProviderInterface;
+use Lex\Yii2\Cycle\Provider\CacheProvider;
+use Lex\Yii2\Cycle\Factory\OrmFactory;
+use Lex\Yii2\Cycle\Provider\ProviderInterface;
 /**
 * Example mysql configuration
  */
